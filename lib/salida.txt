@@ -1,0 +1,15 @@
+output.txt
+recording
+salida.txt
+text_casts.rb
+total 16
+-rw-rw-r-- 1 fedex fedex  118 may 21 01:36 output.txt
+drwxrwxr-x 2 fedex fedex 4096 may 21 01:23 recording
+-rw-rw-r-- 1 fedex fedex   46 may 21 01:54 salida.txt
+-rw-rw-r-- 1 fedex fedex  667 may 21 01:40 text_casts.rb
+recording
+drwxrwxr-x 2 fedex fedex 4096 may 21 01:23 recording
+recording
+drwxrwxr-x 2 fedex fedex 4096 may 21 01:23 recording
+recording
+drwxrwxr-x 2 fedex fedex 4096 may 21 01:23 recording
