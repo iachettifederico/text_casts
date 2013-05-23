@@ -1,28 +1,35 @@
 require 'fileutils'
 
-initial_dir = Dir.pwd
-output_dir = "/home/fedex/code/sandbox/recording"
-output_file = "output.txt"
-old_stdout = STDOUT
-STDOUT = ""
+$initial_dir = Dir.pwd
+$output_dir = "/home/fedex/code/sandbox/recording"
+$project_name = "my_recording"
 
-def commits
-  $out ||= `git log --pretty=oneline --all`
-  $out.scan(/^(.+) \"(.+)\"/).reverse
+def timestamps
+  return @timestamps if @timestamps
+  filenames = `ls #{$output_dir}`.split("\n")
+  @timestamps = filenames.map! { |filename| filename[/#{$project_name}_(\d+\.\d+)/,1].to_f}.sort!
 end
 
-Dir.chdir output_dir do
-  system "git checkout #{commits.first} > /dev/null"
-
-  commits.each do |commit_hash, time|
-    system "git checkout #{commit_hash} > /dev/null"
-
-    start_time = Time.now
-    sleep 0.01 while (Time.now - start_time) < time.to_f
-    system "clear"
-    puts `cat #{output_file}`
+slides = Dir.chdir $output_dir do
+  timestamps.each_with_object({}) do |timestamp, h|
+    current_file_name = "#{$project_name}_#{timestamp}"
+    h[timestamp] = `cat #{current_file_name}`
   end
-
 end
 
-STDOUT = old_stdout
+start_time = Time.now
+slides.each do |timestamp, slide|
+  #system "clear"
+  puts slide
+  sleep 0.00000000001 while timestamp > (Time.now - start_time)
+end
+
+#start_time = Time.now
+#until ((current_time=(Time.now-start_time)) > timestamps.last)
+#  current_slot = slides.keys.each_cons(2).find { |s, e| current_time.between?(s,e) }
+#  if current_slot && current_slot != @last_slot
+#    @last_slot = current_slot
+#    system "clear"
+#    puts slides[current_slot.first]
+#  end
+#end
