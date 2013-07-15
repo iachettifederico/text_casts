@@ -1,4 +1,4 @@
-require_relative "../../lib/timer"
+require_relative "../../../lib/text_casts/timer"
 
 Clock = Struct.new(:now) do
   def initialize(now: Time.now)
@@ -28,7 +28,7 @@ describe Timer do
     let(:clock) { Clock.new }
     let(:timer) { Timer.new(clock: clock) }
 
-it "returns the amount of miliseconds elapsed since the start time" do
+    it "returns the amount of miliseconds elapsed since the start time" do
       timer.elapsed.should == 0
       timer.start
 
