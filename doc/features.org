@@ -1,0 +1,17 @@
+* Roles
+- Recorder
+- Player
+- Project
+- User
+
+* Features
+1. Recorder starts a Recording
+2. Recorder stops a Recording
+3. Recorder records  one Frame
+4. Project stores    one Frame
+5. Player reproduces one Frame
+6. Recorder records  one Frame every one milisecond
+1. Project stores    all the Frames
+7. Player reproduces one Frame every one milisecond
+8. Recorder records  one Frame every n miliseconds
+9. Player reproduces one Frame every n miliseconds
